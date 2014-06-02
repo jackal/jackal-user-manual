@@ -1,6 +1,7 @@
 .DS_Store
+jackal.pdf
 *.aux
 *.log
 *.toc
 *.out
-/*.pdf
+*.swp

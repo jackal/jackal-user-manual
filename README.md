@@ -4,7 +4,7 @@ LaTeX User Manuals
 This repo contains a prototype-in-progress of a LaTeX-based Clearpath Robotics
 user manual, for Jackal. To build the manual, run:
 
-    xelatex test.tex
+    xelatex jackal.tex
 
 The output is written to the `test.pdf` file.
 

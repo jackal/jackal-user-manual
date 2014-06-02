@@ -1,14 +1,8 @@
-\documentclass[]{clearpath-user-manual}
+\documentclass[]{clearpath-manual}
 
 \begin{document}
 
-\thispagestyle{empty}
-\begin{tikzpicture}[remember picture,overlay]
-\node[anchor=north west,inner sep=0pt] at ($(current page.north west)+(0cm,0cm)$) {
-  \includegraphics{gen/cover-page.pdf}
-};
-\end{tikzpicture}
-
+\manualcover{gen/cover-page.pdf}
 \tableofcontents
 
 \section{Introduction}
@@ -54,7 +48,7 @@ When your ROS install is set up, install the Jackal desktop packages:
 sudo apt-get install ros-indigo-jackal-desktop
 \end{lstlisting}
 
-To connect to a running Jackal.
+To connect to a running Jackal, follow these steps:
 
 
 \end{document}
