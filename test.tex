@@ -19,15 +19,7 @@
 \setsansfont{DejaVu Sans}
 \setmonofont[Mapping=tex-ansi]{DejaVu Sans Mono}
 
-\usepackage{fancyhdr}
-%\pagestyle{fancy}
 \pagenumbering{arabic}
-\lhead{\itshape Title}
-\chead{}
-\rhead{\itshape{\nouppercase{\leftmark}}}
-\lfoot{}
-\cfoot{}
-\rfoot{\thepage}
 
 % Chapters start new pages.
 \usepackage{titlesec}
@@ -42,6 +34,22 @@
 \usepackage[setpagesize=false, % page size defined by xetex
             unicode=false, % unicode breaks when used with xetex
             xetex]{hyperref}
+
+\usepackage{background}
+\backgroundsetup{
+  scale=1,
+  angle=0,
+  opacity=1,
+  color=black,
+  contents={
+    \begin{tikzpicture}[remember picture,overlay]
+      \node at ([xshift=-1.8in,yshift=-1.0in] current page.north east)
+      {
+        \includegraphics[width=2.2in]{clearpath-logo.pdf}
+      }; % logo goes here
+    \end{tikzpicture}
+  }
+}
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt plus 2pt minus 1pt}
@@ -83,6 +91,16 @@ If you elected to purchase standard upgrade modules, these will be integrated in
 \section{Getting Started}
 
 The first step is to power up your Jackal and have some fun driving it around!
+
+\subsection{Talking to Jackal}
+
+The next thing you probably want to do is get Jackal on your wireless network.
+
+\subsection{Jackal Desktop}
+
+\begin{lstlisting}
+sudo apt-get install ros-indigo-jackal-desktop
+\end{lstlisting}
 
 
 \end{document}

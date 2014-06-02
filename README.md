@@ -18,10 +18,11 @@ On Ubuntu, run:
 
     sudo apt-get install texlive-xetex
 
-TODO:
+Install some additional texlive packages:
 
- * user `tlmgr` to install additional packages
- * optional font installation
+    sudo tlmgr install everypage background titlesec
+
+If you'd like to build the official manual, make sure that the DINPro font is available on your system.
 
 
 Visuals
