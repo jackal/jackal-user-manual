@@ -4,7 +4,7 @@
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-\usepackage[letterpaper, total={6.5in, 8in}, top=1.75in]{geometry}
+\usepackage[letterpaper, total={6.5in, 8in}, top=1.75in, left=1.25in]{geometry}
 
 % use microtype if available
 \IfFileExists{microtype.sty}{\usepackage{microtype}}{}
@@ -16,14 +16,24 @@
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
 \setmainfont{DINPro}
-\setsansfont{DejaVu Sans}
+\setsansfont{DINPro}
 \setmonofont[Mapping=tex-ansi]{DejaVu Sans Mono}
+
+\usepackage{color}
+\definecolor{orange}{RGB}{243,130,55}
+\definecolor{grey}{RGB}{71,71,71}
 
 \pagenumbering{arabic}
 
 % Chapters start new pages.
 \usepackage{titlesec}
 \newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
+
+\titleformat{\section}
+  {\normalfont\sffamily\fontsize{22pt}{8pt}\bfseries\color{orange}}{\thesection}{12pt}{\MakeUppercase}
+
+\titleformat{\subsection}
+  {\normalfont\sffamily\fontsize{14pt}{6pt}\bfseries\color{grey}}{\thesubsection}{12pt}{}
 
 \usepackage{listings}
 \usepackage{longtable}
@@ -71,7 +81,7 @@
 Jackal is a rugged, light, fast and easy-to-use unmanned ground vehicle for ROS Indigo, presented
 by Clearpath Robotics.
 
-Jackal includes as standard an internal x86 PC, as well as basic IMU and GPS. Standard perception
+Jackal includes a standard internal x86 PC, as well as basic IMU and GPS. Standard perception
 modules are available, including URDF and simulator integration, and demonstration applications.
 Please inquire with Clearpath Robotics for details.
 
