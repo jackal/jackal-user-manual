@@ -6,7 +6,8 @@ user manual, for Jackal. To build the manual, run:
 
     xelatex jackal.tex
 
-The output is written to the `test.pdf` file.
+The output is written to the `jackal.pdf`. You need to run the command three times
+to generate the complete manual including table of contents and correct watermarks.
 
 
 Setting it up
