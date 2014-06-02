@@ -25,6 +25,13 @@ Install some additional texlive packages:
 
 If you'd like to build the official manual, make sure that the DINPro font is available on your system.
 
+On Windows, do:
+	Install TeXworks
+	Install DINPro font (from our server) into your system fonts
+	Install Source Tree and register accounts. Remeber BitBucket uses full email address.
+	Checkout a LaTeX document, and open it in TeXworks
+	In Texworks, in the drop down menu beside the green arrow, switch to XeLaTeX + MakeIndex + BibTex
+	Click the green start arrow
 
 Visuals
 -------
