@@ -20,7 +20,7 @@ On Ubuntu, run:
 
 Install some additional texlive packages:
 
-    sudo tlmgr install everypage background titlesec
+    sudo tlmgr install everypage background titlesec microtype upquote
 
 If you'd like to build the official manual, make sure that the DINPro font is available on your system.
 

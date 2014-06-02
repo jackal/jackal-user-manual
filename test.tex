@@ -1,41 +1,42 @@
 \documentclass[]{article}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
-\usepackage[letterpaper, total={6.5in, 8in}, top=1.75in, left=1.25in]{geometry}
 
-% use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-% use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+%% Setup typefaces
 
+\usepackage{microtype}
 \usepackage{fontspec}
 \usepackage{xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
 \setmainfont{DINPro}
 \setsansfont{DINPro}
-\setmonofont[Mapping=tex-ansi]{DejaVu Sans Mono}
+\setmonofont{Consolas}
+
+%% Define Clearpath colours
 
 \usepackage{color}
 \definecolor{orange}{RGB}{243,130,55}
 \definecolor{grey}{RGB}{71,71,71}
 
+%% Set up page formatting
+
+\usepackage[letterpaper, total={6.5in, 8in}, top=1.75in, left=1.25in]{geometry}
+\newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
 \pagenumbering{arabic}
 
-% Chapters start new pages.
-\usepackage{titlesec}
-\newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
+%% Set up heading
 
+\usepackage{titlesec}
 \titleformat{\section}
   {\normalfont\sffamily\fontsize{22pt}{8pt}\bfseries\color{orange}}{\thesection}{12pt}{\MakeUppercase}
-
 \titleformat{\subsection}
   {\normalfont\sffamily\fontsize{14pt}{6pt}\bfseries\color{grey}}{\thesubsection}{12pt}{}
 
+%% Set up source code listings
+
+\usepackage{upquote}
 \usepackage{listings}
+\lstset{basicstyle=\ttfamily,breaklines=true}
+
 \usepackage{longtable}
 
 \usepackage{tikz}
@@ -44,6 +45,9 @@
 \usepackage[setpagesize=false, % page size defined by xetex
             unicode=false, % unicode breaks when used with xetex
             xetex]{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+%% Clearpath watermark in the top right corner of each page
 
 \usepackage{background}
 \backgroundsetup{
@@ -108,9 +112,18 @@ The next thing you probably want to do is get Jackal on your wireless network.
 
 \subsection{Jackal Desktop}
 
+To use Jackal from your desktop computer, first set up a basic ROS Installation. See the following
+page for details:
+
+\url{http://wiki.ros.org/indigo/Installation/Ubuntu}
+
+When your ROS install is set up, install the Jackal desktop packages:
+
 \begin{lstlisting}
 sudo apt-get install ros-indigo-jackal-desktop
 \end{lstlisting}
+
+To connect to a running Jackal.
 
 
 \end{document}
