@@ -14,8 +14,8 @@
 \RequirePackage{xltxtra,xunicode}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
-\setmainfont{DINPro}
-\setsansfont{DINPro}
+\setmainfont{Helvetica}
+\setsansfont{Helvetica}
 \setmonofont{Consolas}
 
 %% Define Clearpath colours
@@ -64,9 +64,9 @@
   color=black,
   contents={
     \begin{tikzpicture}[remember picture,overlay]
-      \node at ([xshift=-1.8in,yshift=-1.0in] current page.north east)
+      \node at ([xshift=3.495in,yshift=3.6in] current page.north west)
       {
-        \includegraphics[width=2.2in]{clearpath-logo.pdf}
+        \includegraphics[width=2.0in]{clearpath-logo.pdf}
       }; % logo goes here
     \end{tikzpicture}
   }

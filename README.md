@@ -23,8 +23,6 @@ Install some additional texlive packages:
 
     sudo tlmgr install everypage background titlesec microtype upquote
 
-If you'd like to build the official manual, make sure that the DINPro font is available on your system.
-
 On Windows, do:
 - Install TeXworks
 - Install DINPro font (from our server) into your system fonts
@@ -32,6 +30,13 @@ On Windows, do:
 - Checkout a LaTeX document, and open it in TeXworks
 - In Texworks, in the drop down menu beside the green arrow, switch to XeLaTeX + MakeIndex + BibTex
 - Click the green start arrow
+
+Typefaces
+---------
+To build the official manual, the following fonts will need to be installed:
+
+- DINPro
+- [Consolas](http://www.fontpalace.com/font-download/Consolas/)
 
 Visuals
 -------
