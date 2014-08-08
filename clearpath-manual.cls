@@ -20,9 +20,15 @@
 
 %% Define Clearpath colours
 
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \definecolor{orange}{RGB}{243,130,55}
 \definecolor{grey}{RGB}{71,71,71}
+\definecolor{lightgrey}{RGB}{228,228,228}
+
+%% Make TOC links black rather than blue
+\AtBeginDocument{
+\hypersetup{colorlinks=true, linkcolor=black}
+}
 
 %% Set up page formatting
 
@@ -42,7 +48,19 @@
 
 \usepackage{upquote}
 \usepackage{listings}
-\lstset{basicstyle=\ttfamily,breaklines=true}
+\lstset{
+  basicstyle=\ttfamily,
+  breaklines=true,
+  upquote=false,
+  backgroundcolor=\color{lightgrey},
+  aboveskip=8pt,
+  belowskip=-1pt,
+  framexleftmargin=5pt,
+  framexrightmargin=5pt,
+  framextopmargin=2pt,
+  framexbottommargin=2pt,
+  frame=tb, framerule=0pt
+}
 
 \usepackage{longtable}
 
@@ -65,9 +83,7 @@
   contents={
     \begin{tikzpicture}[remember picture,overlay]
       \node at ([xshift=3.495in,yshift=3.6in] current page.north west)
-      {
-        \includegraphics[width=2.0in]{clearpath-logo.pdf}
-      }; % logo goes here
+      {\includegraphics[width=2.0in]{clearpath-logo.pdf}};
     \end{tikzpicture}
   }
 }
