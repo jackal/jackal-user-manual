@@ -7,11 +7,13 @@
 
 \section{Introduction}
 
-Jackal is a rugged, light, fast and easy-to-use unmanned ground vehicle for ROS Indigo, presented
-by Clearpath Robotics.
+Jackal is a rugged, light, fast, and easy-to-use unmanned ground vehicle for ROS
+Indigo, presented by Clearpath Robotics.
 
-Jackal includes a standard internal x86 PC, as well as basic IMU and GPS. Standard perception
-modules are available, including URDF and simulator integration, and demonstration applications.
+Jackal includes a standard internal PC, as well as basic IMU and GPS. Standard
+perception modules are available, including URDF and simulator integration, and
+demonstration applications.
+
 Please inquire with Clearpath Robotics for details.
 
 \subsection{What's Included}
@@ -23,22 +25,105 @@ Contained in your Jackal shipment are the following items:
   \item 270 watt-hour lithium battery pack
   \item 110V/220V universal charger
   \item Sony Bluetooth controller
+  \item Jackal User Manual
 \end{itemize}
 
 If you elected to purchase standard upgrade modules, these will be integrated into your Jackal chassis.
 
+\subsection{Hardware Overview}
+
+Jackal's external features include the 100mm square mounting pattern on the top plate, 95mm wheels, human
+machine interface panel (HMI), and top plate latches. These features are labeled in \autoref{ext}.
+
+\begin{figure}[ht]
+  \centering
+  \placeholder{9cm}{5cm}
+  \caption{External components of Jackal.}
+  \label{ext}
+\end{figure}
+
+To access Jackal's interior, actuate the latches under the front end of the lid, on the opposite end from
+the HMI. When you lift the lid, you will see Jackal's onboard Li-Ion battery pack, and its two connectors.
+The large Anderson Power Pole connector is to supply power to Jackal and must be connected in order for
+Jackal to operate. The smaller white Molex connector allows the battery pack to be charged inside Jackal 
+while Jackal is powered off. It is recommended to connect both. The interior components of Jackal are
+labeled in \autoref{int}.
+
+\begin{figure}[ht]
+  \centering
+  \placeholder{9cm}{5cm}
+  \caption{Battery area inside Jackal.}
+  \label{int}
+\end{figure}
+
+Finally, you may undo the thumbscrews which hold Jackal's computer tray to the lid. The tray lowers,
+revealing Jackal's onboard Mini-ITX PC, user power supplies, and internal user hardware mounting area.
+Please see \autoref{tray} and \autoref{upb} for the components of the tray and user power supplies.
+Note that the fused user power is available as four-pin Molex connectors, or a plug-in screw terminal
+block. For more information on integrating payloads electrically, see \autoref{payload-elec}.
+
+\begin{figure}[pt]
+  \centering
+  \placeholder{12cm}{8cm}
+  \caption{Computer and user tray.}
+  \label{tray}
+\end{figure}
+
+\begin{figure}[pb]
+  \centering
+  \placeholder{12cm}{8cm}
+  \caption{User power supply.}
+  \label{upb}
+\end{figure}
+
+\subsection{System Architecture}
+
+Like many ROS robots, Jackal is built around an x86 PC running Ubuntu, paired with an
+ARM MCU. The MCU handles IO, power supply monitoring, and motor control, as well as
+supplying data from the integrated IMU and GPS receiver. The communication channel
+between the MCU and PC is a Full Speed USB connection, with the MCU operating as a
+standard serial CDC device.
+
+The communication protocol used is rosserial. An instance of the rosserial\_server
+serial node is embedded in the jackal\_base node, where it is connected directly to
+Jackal's kinematic controller. \autoref{arch} is a high-level overview of the ROS
+nodes in base Jackal and the data flow through them.
+
+\begin{figure}[hb]
+  \centering
+  \placeholder{16cm}{18cm}
+  \caption{ROS nodes and topics on Jackal.}
+  \label{arch}
+\end{figure}
+
 \section{Getting Started}
 
-The first step is to power up your Jackal and have some fun driving it around!
+The first step is to power up your Jackal and have some fun driving it around! If you've
+just unpacked Jackal from its shipment packaging, you'll need to install and plug in the
+battery.
+
+Begin by pressing the power button on Jackal's HMI panel. The LEDs should show a test
+pattern, after which you can wait about 30 seconds for the internal PC to finish booting
+up.
+
+When the comms LED ( \placeholder{0.35cm}{0.35cm} ) is green, this signals that the PC is
+finished booting up, and that the PC and MCU are in communication. At this point, press
+the PS button on the Sony Bluetooth controller, to sync the controller to Jackal. Now,
+you should be able to drive around. Hold the L2 trigger button, and push the joystick
+forward.
+
+If you're not seeing any action, check \nameref{trouble} on page \pageref{trouble}.
 
 \subsection{Talking to Jackal}
 
-The next thing you probably want to do is get Jackal on your wireless network.
+The next thing you probably want to do is get Jackal on your wireless network. Once it's
+on the wireless, you can access it via SSH or as a remote ROS master.
+
 
 \subsection{Jackal Desktop}
 
-To use Jackal from your desktop computer, first set up a basic ROS Installation. See the following
-page for details:
+To command or observe Jackal from your desktop computer, first set up a basic
+ROS Installation. See the following page for details:
 
 \url{http://wiki.ros.org/indigo/Installation/Ubuntu}
 
@@ -49,6 +134,58 @@ sudo apt-get install ros-indigo-jackal-desktop
 \end{lstlisting}
 
 To connect to a running Jackal, follow these steps:
+
+
+\section{Apps}
+
+Jackal's demonstration software are packaged as Robot Apps, or \textit{rapps}.
+
+
+\section{Charging \& Maintenance}
+
+Jackal's Li-Ion battery pack may be charged internal to the chassis---simply plug in
+the charger to the charge port located under the rear fender. Charging will occur
+only when Jackal is powered down.
+
+Alternatively, if you have multiple battery packs, you can easily lift the lid and
+remove the battery for external charging. When charging externally, remove the pigtail
+which adapts the charger to the platform's weather sealed charge port.
+
+TODO: More about charging and battery care.
+
+
+\section{Payload Integration Guide}
+
+If you're wanting to attach custom hardware to Jackal, you'll have to take care of
+mechanical mounting, electrical supply, and software integration. This section
+aims to equip you with respect to these challenges.
+
+\subsection{Mechanical Mounting}
+
+For external payloads, use the 
+
+TODO: Orthographic diagram of that.
+
+\subsection{User Electrical Supply}\label{payload-elec}
+
+TODO: Diagram of pinout of user power Molex connection and screw terminal.
+
+\subsection{Software Integration}
+
+TODO: Links to ROS wiki, information about URDF, etc.
+
+
+\section{Troubleshooting}\label{trouble}
+
+Clearpath is committed to your success with Jackal. Please get in touch with us at
+\href{mailto:support@clearpathrobotics.com}{support@clearpathrobotics.com} and we'll do our
+best to get you rolling again quickly.
+
+If your issue is specifically about ROS and is something which may be of interest
+to the broader community, consider asking it on \href{http://answers.ros.org}{answers.ros.org}.
+If you don't get a satisfactory response, please ping us with a link to your question.
+
+TODO: Suggestions for mechanical/electrical troubleshooting. Wheel replacement? MCU replacement? 
 
 
 \end{document}
