@@ -5,18 +5,20 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions
 
-\LoadClass[]{article}
+\LoadClass[11pt]{article}
 
 %% Setup typefaces
 
 \RequirePackage{microtype}
 \RequirePackage{fontspec}
 \RequirePackage{xltxtra,xunicode}
+\RequirePackage{titlesec}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
 \setmainfont{Helvetica}
 \setsansfont{Helvetica}
 \setmonofont{Consolas}
+\newfontfamily{\titlefont}{DINPro}
 
 %% Define Clearpath colours
 
@@ -36,13 +38,17 @@
 \newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
 \pagenumbering{arabic}
 
+%% Placeholder image for missing figures
+
+\newcommand{\placeholder}[2]{\textcolor{lightgrey}{\rule[-2pt]{#1}{#2}}}
+
 %% Set up heading
 
 \RequirePackage{titlesec}
 \titleformat{\section}
-  {\normalfont\sffamily\fontsize{22pt}{8pt}\bfseries\color{orange}}{\thesection}{12pt}{\MakeUppercase}
+  {\titlefont\fontsize{24pt}{6pt}\bfseries\color{orange}}{\thesection}{12pt}{\MakeUppercase}
 \titleformat{\subsection}
-  {\normalfont\sffamily\fontsize{14pt}{6pt}\bfseries\color{grey}}{\thesubsection}{12pt}{}
+  {\titlefont\fontsize{18pt}{4pt}\bfseries\color{grey}}{\thesubsection}{12pt}{}
 
 %% Set up source code listings
 
