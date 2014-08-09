@@ -34,7 +34,7 @@
 
 %% Set up page formatting
 
-\RequirePackage[letterpaper, total={6.5in, 8in}, top=1.75in, left=1.25in]{geometry}
+\RequirePackage[letterpaper, total={6.25in, 8in}, top=1.75in, left=1.5in]{geometry}
 \newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
 \pagenumbering{arabic}
 
@@ -46,9 +46,9 @@
 
 \RequirePackage{titlesec}
 \titleformat{\section}
-  {\titlefont\fontsize{24pt}{6pt}\bfseries\color{orange}}{\thesection}{12pt}{\MakeUppercase}
+  {\titlefont\fontsize{24pt}{6pt}\bfseries\color{orange}}{\hspace*{-12.8pt}\llap\thesection\hskip 12pt}{0pt}{\MakeUppercase}
 \titleformat{\subsection}
-  {\titlefont\fontsize{18pt}{4pt}\bfseries\color{grey}}{\thesubsection}{12pt}{}
+  {\titlefont\fontsize{18pt}{4pt}\bfseries\color{grey}}{\hspace*{-12.8pt}\llap\thesubsection\hskip 12pt}{0pt}{}
 
 %% Set up source code listings
 
