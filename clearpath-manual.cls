@@ -52,8 +52,8 @@
 
 %% Set up source code listings
 
-\usepackage{upquote}
-\usepackage{listings}
+\RequirePackage{upquote}
+\RequirePackage{listings}
 \lstset{
   basicstyle=\ttfamily,
   breaklines=true,
@@ -68,19 +68,19 @@
   frame=tb, framerule=0pt
 }
 
-\usepackage{longtable}
+\RequirePackage{longtable}
 
-\usepackage{tikz}
+\RequirePackage{tikz}
 \usetikzlibrary{calc}
-\usepackage{graphicx}
-\usepackage[setpagesize=false, % page size defined by xetex
+\RequirePackage{graphicx}
+\RequirePackage[setpagesize=false, % page size defined by xetex
             unicode=false, % unicode breaks when used with xetex
             xetex]{hyperref}
 \hypersetup{colorlinks=true,urlcolor=blue}
 
 %% Clearpath watermark in the top right corner of each page
 
-\usepackage{background}
+\RequirePackage{background}
 \backgroundsetup{
   scale=1,
   angle=0,
