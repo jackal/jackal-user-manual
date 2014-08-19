@@ -111,20 +111,28 @@
 
 \RequirePackage[many]{tcolorbox}
 
+\newcommand{\MkAlertBox}[1]{
+  \newtcolorbox{#1}[1][]{
+    title=##1,
+    colback=#1bg, colbacktitle=#1bg,
+    coltitle=black,
+    fonttitle=\bfseries,
+    bottomrule=1pt, toprule=1pt,
+    leftrule=1pt, rightrule=1pt,
+    titlerule=0pt,
+    outer arc=4pt,
+    colframe=#1border,
+    enlarge top initially by=5pt,
+    theorem style=margin break, left=8pt, oversize
+  }
+}
+
 \definecolor{noteborder}{RGB}{180,190,230}
 \definecolor{notebg}{RGB}{220,232,255}
-\newtcolorbox{note}[1][]{
-  title=#1,
-  colback=notebg, colbacktitle=notebg,
-  coltitle=black,
-  fonttitle=\bfseries,
-  bottomrule=1pt, toprule=1pt,
-  leftrule=1pt, rightrule=1pt,
-  titlerule=0pt,
-  outer arc=4pt,
-  colframe=noteborder,
-  enlarge top initially by=5pt,
-  theorem style=margin break, left=8pt, oversize
-}
+\MkAlertBox{note}
+
+\definecolor{warningborder}{RGB}{220,150,150}
+\definecolor{warningbg}{RGB}{255,190,190}
+\MkAlertBox{warning}
 
 \endinput
