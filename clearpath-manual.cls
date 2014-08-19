@@ -78,6 +78,11 @@
             xetex]{hyperref}
 \hypersetup{colorlinks=true,urlcolor=blue}
 
+%% Compact list formatting
+
+\RequirePackage{enumitem}
+\setlist{nolistsep}
+
 %% Clearpath watermark in the top right corner of each page
 
 \RequirePackage{background}
