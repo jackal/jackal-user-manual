@@ -34,7 +34,7 @@
 
 %% Set up page formatting
 
-\RequirePackage[letterpaper, total={6.25in, 8in}, top=1.75in, left=1.5in]{geometry}
+\RequirePackage[letterpaper, total={6.0in, 8in}, top=1.75in, left=1.5in]{geometry}
 \newcommand{\sectionbreak}{\clearpage\thispagestyle{plain}}
 \pagenumbering{arabic}
 
@@ -105,6 +105,26 @@
     \includegraphics{#1}
   };
   \end{tikzpicture}
+}
+
+%% Create macros for callout info boxes
+
+\RequirePackage[many]{tcolorbox}
+
+\definecolor{noteborder}{RGB}{180,190,230}
+\definecolor{notebg}{RGB}{220,232,255}
+\newtcolorbox{note}[1][]{
+  title=#1,
+  colback=notebg, colbacktitle=notebg,
+  coltitle=black,
+  fonttitle=\bfseries,
+  bottomrule=1pt, toprule=1pt,
+  leftrule=1pt, rightrule=1pt,
+  titlerule=0pt,
+  outer arc=4pt,
+  colframe=noteborder,
+  enlarge top initially by=5pt,
+  theorem style=margin break, left=8pt, oversize
 }
 
 \endinput

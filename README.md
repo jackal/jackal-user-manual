@@ -21,7 +21,7 @@ On Ubuntu, run:
 
 Install some additional texlive packages:
 
-    sudo tlmgr install everypage background titlesec microtype upquote
+    sudo tlmgr install everypage background titlesec microtype upquote tcolorbox environ trimspaces
 
 On Windows, do:
 - Install TeXworks
