@@ -55,7 +55,7 @@
 \RequirePackage{upquote}
 \RequirePackage{listings}
 \lstset{
-  basicstyle=\ttfamily,
+  basicstyle=\ttfamily\footnotesize,
   breaklines=true,
   upquote=false,
   backgroundcolor=\color{lightgrey},
