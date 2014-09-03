@@ -1,8 +1,9 @@
 \documentclass[]{clearpath-manual}
+\graphicspath{{gen/}}
 
 \begin{document}
 
-\manualcover{gen/cover-page.pdf}
+\manualcover{cover-page.pdf}
 \tableofcontents
 
 \section{Introduction}
@@ -71,7 +72,8 @@ block. For more information on integrating payloads electrically, see \autoref{p
 
 \begin{figure}[pb]
   \centering
-  \placeholder{12cm}{8cm}
+  \def\svgwidth{13cm}
+  \input{gen/user-power.pdf_tex}
   \caption{User power supply.}
   \label{upb}
 \end{figure}
