@@ -1,0 +1,64 @@
+%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'user-power.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{566.92900391bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.75000047)%
+    \put(0,0){\includegraphics[width=\unitlength]{user-power.pdf}}%
+    \put(0.71801383,0.60186584){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{User Power Ports}}}%
+    \put(0.71191741,0.44505738){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{User Power Fuses}}}%
+    \put(0.59559303,0.69524614){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{High Current 24V User Power}}}%
+    \put(0.60793062,0.32631835){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{User Power Screw Terminals}}}%
+    \put(0.61899719,0.28145224){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{5V}}}%
+    \put(0.619412,0.23615205){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{GND}}}%
+    \put(0.61835091,0.19084221){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{12V}}}%
+    \put(0.619412,0.14581208){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{GND}}}%
+    \put(0.61907438,0.10050224){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{24V}}}%
+    \put(0.619412,0.05547215){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{GND}}}%
+  \end{picture}%
+\endgroup%
