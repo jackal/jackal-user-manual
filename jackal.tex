@@ -17,27 +17,6 @@ demonstration applications.
 
 Please inquire with Clearpath Robotics for details.
 
-\begin{note}[Note Title]
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id
-nibh iaculis, scelerisque quam nec, congue est. Praesent sollicitudin viverra odio
-eu tincidunt. Ut semper volutpat metus, ut feugiat metus lobortis eu. Fusce tincidunt
-rutrum posuere. Nunc consequat luctus bibendum.
-\end{note}
-
-\begin{note}
-Note without a title. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id
-nibh iaculis, scelerisque quam nec, congue est. Praesent sollicitudin viverra odio
-eu tincidunt. Ut semper volutpat metus, ut feugiat metus lobortis eu. Fusce tincidunt
-rutrum posuere. Nunc consequat luctus bibendum.
-\end{note}
-
-\begin{warning}
-Note without a title. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id
-nibh iaculis, scelerisque quam nec, congue est. Praesent sollicitudin viverra odio
-eu tincidunt. Ut semper volutpat metus, ut feugiat metus lobortis eu. Fusce tincidunt
-rutrum posuere. Nunc consequat luctus bibendum.
-\end{warning}
-
 \subsection{What's Included}
 
 Contained in your Jackal shipment are the following items:
@@ -58,8 +37,8 @@ Jackal's external features include the 100mm square mounting pattern on the top 
 machine interface panel (HMI), and top plate latches. These features are labeled in \autoref{ext}.
 
 \begin{figure}[ht]
-  \centering
-  \placeholder{9cm}{5cm}
+  \centering\footnotesize
+  \placeholder{11cm}{7cm}
   \caption{External components of Jackal.}
   \label{ext}
 \end{figure}
@@ -72,8 +51,9 @@ while Jackal is powered off. It is recommended to connect both. The interior com
 labeled in \autoref{int}.
 
 \begin{figure}[ht]
-  \centering
-  \placeholder{9cm}{5cm}
+  \centering\footnotesize
+  \def\svgwidth{10cm}
+  \input{gen/battery-view.pdf_tex}
   \caption{Battery area inside Jackal.}
   \label{int}
 \end{figure}
@@ -85,15 +65,16 @@ Note that the fused user power is available as four-pin Molex connectors, or a p
 block. For more information on integrating payloads electrically, see \autoref{payload-elec}.
 
 \begin{figure}[pt]
-  \centering
-  \placeholder{12cm}{8cm}
+  \centering\footnotesize
+  \def\svgwidth{13cm}
+  \input{gen/user-tray.pdf_tex}
   \caption{Computer and user tray.}
   \label{tray}
 \end{figure}
 
 \begin{figure}[pb]
-  \centering
-  \def\svgwidth{13cm}
+  \centering\footnotesize
+  \def\svgwidth{12cm}
   \input{gen/user-power.pdf_tex}
   \caption{User power supply.}
   \label{upb}
@@ -113,7 +94,7 @@ Jackal's kinematic controller. \autoref{arch} is a high-level overview of the RO
 nodes in base Jackal and the data flow through them.
 
 \begin{figure}[hb]
-  \centering
+  \centering\footnotesize
   \placeholder{16cm}{18cm}
   \caption{ROS nodes and topics on Jackal.}
   \label{arch}
