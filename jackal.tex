@@ -15,7 +15,8 @@ Jackal includes a standard internal PC, as well as basic IMU and GPS. Standard
 perception modules are available, including URDF and simulator integration, and
 demonstration applications.
 
-Please inquire with Clearpath Robotics for details.
+Please inquire with Clearpath Robotics for details. See \nameref{contact} on page
+\pageref{contact} for contact information.
 
 \subsection{What's Included}
 
@@ -29,14 +30,18 @@ Contained in your Jackal shipment are the following items:
   \item Jackal User Manual
 \end{itemize}
 
-If you elected to purchase standard upgrade modules, these will be integrated into your Jackal chassis.
+If you elected to purchase standard payload modules or custom integration services with
+Jackal, then additional equipment will be included per your specific configuration, plus
+further documentation as required.
 
 \subsection{Hardware Overview}
 
-Jackal's external features include the \SI{120}{\mm} square mounting pattern on the lid panel,
-\SI{100}{\mm} diameter wheels, human machine interface panel (HMI), and lid panel latches. The
-HMI panel is shown in \autoref{hmi}, and includes from left: motor button, comms indictor, wifi
-indicator, battery indicator, and system power button.
+Jackal's external features include the mounting pattern on the lid panel, \SI{190}{\mm} diameter
+wheels, human machine interface panel (HMI), and lid panel latches. The HMI panel is shown in
+\autoref{hmi}, and includes from left: motor button, comms indictor, wifi indicator, battery
+indicator, and system power button.
+
+% TODO: Labeled drawing of external features.
 
 \begin{figure}[ht]
   \centering
@@ -77,7 +82,8 @@ Finally, you may undo the thumbscrews which hold Jackal's computer tray to the l
 revealing Jackal's onboard Mini-ITX PC, user power supplies, and internal user hardware mounting area.
 Please see \autoref{tray} and \autoref{upb} for the components of the tray and user power supplies.
 Note that the fused user power is available as four-pin Molex connectors, or a plug-in screw terminal
-block. For more information on integrating payloads electrically, see \autoref{payload-elec}.
+block. For more information on integrating payloads electrically, see \autoref{payload-elec},
+\nameref{payload-elec}.
 
 \begin{figure}[hb]
   \centering
@@ -100,6 +106,8 @@ serial node is embedded in the \lstinline{jackal_base} node, where it is connect
 Jackal's kinematic controller.
 
 The key topics which comprise Jackal's ROS API are given in \autoref{table:rosapi}.
+
+% TODO: Data flow diagram
 
 \begin{warning}[Incomplete Feature]
 Note that due to USB stability problems with Navsat and IMU output enabled, these outputs
@@ -157,26 +165,31 @@ nodes in base Jackal and the data flow through them.
 \section{Getting Started}
 
 The first step is to power up your Jackal and have some fun driving it around! If you've
-just unpacked Jackal from its shipment packaging, you'll need to install and plug in the
+just unpacked Jackal from its shipment packaging, you'll need to open it up and connect the
 battery.
 
-Begin by pressing the power button on Jackal's HMI panel. The LEDs should show a test
-pattern, after which you can wait about 30 seconds for the internal PC to finish booting
-up.
+Press the power button \raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-power.pdf}} on
+Jackal's HMI panel. The LEDs should show a test pattern, after which you will wait about 30
+seconds for the internal PC to finish booting up.
 
-When the comms LED (\raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-comms.pdf}}) is
-green, this signals that the PC isfinished booting up, and that the PC and MCU are in
-communication. At this point, press the PS button on the Sony Bluetooth controller, to
-sync the controller to Jackal. Now, you should be able to drive around. Hold the L2 trigger
-button, and push the joystick forward.
+% TODO: Add this content back when the comms LED actually works.
+% When the comms LED (\raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-comms.pdf}}) is
+% green, this signals that the PC is finished booting up, and that the PC and MCU are in
+% communication. At this point, 
+  
+Press the PS/P3 button on the Sony Bluetooth controller to sync the controller to Jackal. Once
+the small red LED on the controller goes solid, you're paired and ready to drive. Hold the L2 trigger
+button, and push the thumbstick forward. For full speed mode, switch to the L1 trigger.
 
-If you're not seeing any action, check \nameref{trouble} on page \pageref{trouble}.
+If you're not seeing any action, check \nameref{trouble} on page \pageref{trouble} to
+get in touch with support.
 
 \subsection{Wireless Access}
 
-The next thing you probably want to do is get Jackal on your wireless network. The
-easiest way to do this is to access the internal computer, connect to the network port
-labeled \lstinline{STATIC}, and then connect via SSH to
+To get Jackal connected to your local wifi, you must first access the internal computer
+using a wired connection. Open the chassis, lower the computer tray, and connect to the network port
+labeled \lstinline{STATIC} with a standard ethernet cable. Now, set your laptop's ethernet port
+to a static IP such as \lstinline{192.168.1.51}, and connect via SSH to
 \lstinline{administrator@192.168.1.1}. The default password is \lstinline{clearpath}.
 
 Once connected via wire, execute \lstinline{wicd-curses} to enter the text/curses UI to the
@@ -186,7 +199,7 @@ which wireless network you'd like Jackal to connect to upon system startup.
 When the wireless link is established, remove the network cable, re-establish your SSH
 session over wireless, and close up Jackal.
 
-\subsection{Desktop Access}
+\subsection{Remote ROS Connectivity}\label{remote}
 
 Now that Jackal is on the wireless, you can access it via SSH or as a remote ROS master.
 Note that in the default configuration, the background job running on Jackal launches with the 
@@ -210,11 +223,19 @@ rosrun robot_upstart install jackal_base/launch/base.launch \
 change the generated ROS start script (in \lstinline{/usr/sbin/ros-start}) to set the
 \lstinline{ROS_HOSTNAME} env var rather than \lstinline{ROS_IP}.
 
-\item Finally, you can add a static route to you workstation which will route requests
-to from \lstinline{192.168.1.1} to Jackal's real wireless IP on your network.
+\item Finally, you can add a static route to your workstation which will route requests
+from \lstinline{192.168.1.1} to Jackal's real wireless IP on your network. An example of
+this configuration:
+\begin{lstlisting}
+sudo apt-get install ros-indigo-robot-upstart
+export ROS_MASTER_URI=http://192.168.1.1:11311
+export ROS_IP=$(rosrun robot_upstart getifip wlan0)
+sudo route add -net 192.168.1.1 netmask 255.255.255.255 gw $ROS_IP
+\end{lstlisting}
+These commands would be executed on your own machine.
 \end{enumerate}
 
-Please contact Clearpath support if guidance is required in selecting and executing a
+Please contact Clearpath Support if guidance is required in selecting and executing a
 remote access strategy. For more general details on how ROS works over TCP with
 multiple machines, please see:
 
@@ -237,8 +258,8 @@ When your ROS install is set up, install the Jackal desktop packages:
 sudo apt-get install ros-indigo-jackal-desktop
 \end{lstlisting}
 
-Once your remote access to Jackal's ROS master is configured (see options in previous
-section), you can launch the rviz, the ROS robot visualization tool:
+Once your remote access to Jackal's ROS master is configured (see options in \autoref{remote}),
+you can launch rviz, the standard ROS robot visualization tool:
 
 \begin{lstlisting}
 roslaunch jackal_viz view_robot.launch
@@ -315,14 +336,18 @@ If you're wanting to attach custom hardware to Jackal, you'll have to take care 
 mechanical mounting, electrical supply, and software integration. This section
 aims to equip you with respect to these challenges.
 
+% TODO: Images throughout this section.
+
 \subsection{Mechanical Mounting}
 
 For external payloads, the recommended configuration is manufacture a metal or plastic bracket
-which attaches with screws to the \SI{120}{\mm} square mounting holes supplied in Jackal's lid
-panel.
+which attaches to the \SI{120}{\mm} square mounting holes supplied in Jackal's lid
+panel. The included thumbscrews use an M5 thread, if you wish to replace them with conventional
+fasteners. As an alternative to manufacturing a brand new plate, you may remove and modify one
+of the included ones.
 
-For rear-facing payloads, it is also possible to replace (or drill into) the hatch panel which
-covers over access to Jackal's internal PC.
+For rear-facing or back-mounted payloads, it is also possible to replace (or drill into) the
+hatch panel which covers over access to Jackal's internal PC.
 
 \subsection{Electrical Integration}\label{payload-elec}
 
@@ -341,7 +366,9 @@ Confirm voltage and polarity before reconnecting the terminal block.
 You may also choose to terminate your payload's power lead with the appropriate crimps and pins
 for the four pin Molex connector--- this option may be more convenient if you expect to be adding
 and removing your payload from Jackal more frequently and would prefer not to be fiddling with the
-terminal block.
+terminal block. Contact Clearpath Support for details about these parts.
+
+% TODO: Include a table of the parts and diagram showing the pinout.
 
 \subsection{Software Integration}
 
@@ -355,19 +382,22 @@ Jackal, which will include simulation, visualization, and driver support. Howeve
 assist you in integrating your own devices as well.
 
 
-\section{Troubleshooting}\label{trouble}
+\section{Contact}\label{trouble}\label{contact}
 
 Clearpath is committed to your success with Jackal. Please get in touch with us and we'll
 do our best to get you rolling again quickly: \href{mailto:support@clearpathrobotics.com}{support@clearpathrobotics.com}
 
-If your issue is specifically about ROS and is something which may be of interest
+To get in touch with a salesperson regarding Jackal or other Clearpath Robotics products, please
+email \href{mailto:sales@clearpathrobotics.com}{sales@clearpathrobotics.com}.
+
+If you have a an issue that is specifically about ROS and is something which may be of interest
 to the broader community, consider asking it on \href{http://answers.ros.org}{answers.ros.org}.
 If you don't get a satisfactory response, please ping us and include a link to your question
 as posted there. If appropriate, we'll answer in the ROS Answers context for the benefit of the
 community.
 
 Jackal is designed not to require regular maintenance. As it is a newer product, Clearpath
-appreciates your patience as we understand its weak-point components and fill out this section.
-
+appreciates your patience as we understand its weak-point components and fill out the appropriate
+care instructions for the platform.
 
 \end{document}
