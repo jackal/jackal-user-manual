@@ -13,6 +13,7 @@
 \RequirePackage{fontspec}
 \RequirePackage{xltxtra,xunicode}
 \RequirePackage{titlesec}
+\RequirePackage{siunitx}
 \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
 \setmainfont{Helvetica}
@@ -78,10 +79,9 @@
             xetex]{hyperref}
 \hypersetup{colorlinks=true,urlcolor=blue}
 
-%% Compact list formatting
+%% Compact list formatting option
 
 \RequirePackage{enumitem}
-\setlist{nolistsep}
 
 %% Clearpath watermark in the top right corner of each page
 

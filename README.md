@@ -22,7 +22,7 @@ On Ubuntu, run:
 Install some additional texlive packages:
 
     sudo tlmgr install everypage background titlesec microtype upquote \
-                       enumitem tcolorbox environ trimspaces
+                       enumitem tcolorbox environ trimspaces siunitx
 
 On Windows, do:
 - Install TeXworks
