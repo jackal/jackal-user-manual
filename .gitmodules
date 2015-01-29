@@ -1,0 +1,3 @@
+[submodule "clearpath-latex"]
+	path = clearpath-latex
+	url = https://github.com/clearpathrobotics/clearpath-latex.git

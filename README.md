@@ -1,21 +1,23 @@
-LaTeX User Manuals
+Jackal User Manual
 ==================
 
-This repo contains a prototype-in-progress of a LaTeX-based Clearpath Robotics
-user manual, for Jackal. To build the manual, run:
+To build Jackal's user manual, run:
 
+    git clone --recursive https://github.com/jackal/jackal-user-manual.git
     xelatex jackal.tex
 
-The output is written to the `jackal.pdf`. You need to run the command three times
+The output is written to `jackal.pdf`. The `xelatex` command must be invoked twice
 to generate the complete manual including table of contents and correct watermarks.
 
 
 Setting it up
 -------------
 
-On a Mac, download and install [MacTex Basic](http://mirror.ctan.org/systems/mac/mactex/mactex-basic.pkg).
+The manual may be built on any platform supported by TeXWorks or TeXLive.
 
-On Ubuntu, run:
+On a **Mac**, download and install [MacTex Basic](http://mirror.ctan.org/systems/mac/mactex/mactex-basic.pkg).
+
+On **Ubuntu**, run:
 
     sudo apt-get install texlive-xetex
 
@@ -24,7 +26,7 @@ Install some additional texlive packages:
     sudo tlmgr install everypage background titlesec microtype upquote \
                        enumitem tcolorbox environ trimspaces siunitx
 
-On Windows, do:
+On **Windows**:
 - Install TeXworks
 - Install DINPro font (from our server) into your system fonts
 - Install Source Tree and register accounts. Remeber BitBucket uses full email address.
@@ -32,12 +34,14 @@ On Windows, do:
 - In Texworks, in the drop down menu beside the green arrow, switch to XeLaTeX + MakeIndex + BibTex
 - Click the green start arrow
 
+
 Typefaces
 ---------
 To build the official manual, the following fonts will need to be installed:
 
 - DINPro
 - [Consolas](http://www.fontpalace.com/font-download/Consolas/)
+
 
 Visuals
 -------
@@ -52,3 +56,9 @@ For the cover page:
 For diagrams and illustrations:
 * Exclude text, also render LaTeX.
 
+
+License
+-------
+
+Redistribution and use in source and binary forms, with or without modification, is
+not permitted without the express permission of Clearpath Robotics.
