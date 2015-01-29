@@ -35,10 +35,10 @@ Install some additional texlive packages:
                        enumitem tcolorbox environ trimspaces siunitx
 
 On **Windows**:
-- Install TeXworks
-- Install DINPro font (from our server) into your system fonts
-- Install Source Tree and register accounts. Remeber BitBucket uses full email address.
-- Checkout a LaTeX document, and open it in TeXworks
+- Install TeXworks.
+- Install Source Tree, or your preferred Windows Git client.
+- Install DINPro, Consolas typefaces.
+- Use Sourcetree to clone this repo locally, then open `jackal.tex` in TeXworks.
 - In Texworks, in the drop down menu beside the green arrow, switch to XeLaTeX + MakeIndex + BibTex
 - Click the green start arrow
 
