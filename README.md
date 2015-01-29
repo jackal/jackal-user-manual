@@ -47,7 +47,7 @@ Typefaces
 ---------
 To build the official manual, the following fonts will need to be installed:
 
-- DINPro
+- [DINPro](https://www.fontshop.com/families/ff-din/buy)
 - [Consolas](http://www.fontpalace.com/font-download/Consolas/)
 
 
