@@ -1,9 +1,17 @@
 Jackal User Manual
 ==================
 
-To build Jackal's user manual, run:
+This repository contains the LaTeX source code for building the end user product
+documentation for [Jackal](http://www.clearpathrobotics.com/jackal/). If you are
+an end user, please download the official and released version of the manual from
+the [Clearpath Robotics Resources Page](http://www.clearpathrobotics.com/resources/technical-documentation/).
 
-    git clone --recursive https://github.com/jackal/jackal-user-manual.git
+
+Build
+-----
+
+To build Jackal's user manual, clone this repo recursively, and run:
+
     xelatex jackal.tex
 
 The output is written to `jackal.pdf`. The `xelatex` command must be invoked twice
