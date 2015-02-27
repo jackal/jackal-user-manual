@@ -123,33 +123,40 @@ have been temporarily disabled in the 0.1 firmware release. When further testing
 completed, an update will be released to enable these functions.
 \end{warning}
 
-\begin{table}[ht]
-\begin{tabular}{  l  l  p{7cm} }
+\begin{table}[ht] 
+\begin{tabular}{  l  l p{7cm}  }
 \hline
 Topic & Message Type & Purpose \\ \hline
 
-\lstinline{/cmd_vel} & \lstinline{geometry_msgs/Twist} & 
+
+\parbox{0.23\textwidth}{\lstinline{/cmd_vel}} & \parbox{0.23\textwidth}{\lstinline{geometry_msgs/Twist}} & 
 Input to Jackal's kinematic controller. Publish here to make Jackal go. \\ \hline
-\lstinline{/odometry/filtered} & \lstinline{nav_msgs/Odometry} & 
-Published by \lstinline{robot_localization}, a filtered localization estimate based
-on wheel odometry (encoders), integrated IMU, and integrated GPS. \\ \hline
 
-\lstinline{/imu/data} & \lstinline{sensor_msgs/IMU} & 
-Published by \lstinline{imu_filter_madgwick}, an orientation estimate based on Jackal's
-internal gyroscope, accelerometer, and magnetometer. \\ \hline
-\lstinline{/navsat/fix} & \lstinline{sensor_msgs/NavSatFix} & 
+\parbox{0.23\textwidth}{\lstinline{/odometry/filtered}} & \parbox{0.23\textwidth}{\lstinline{nav_msgs/Odometry}} & 
+\parbox{7cm}{Published by \lstinline{robot_localization}, a filtered localization estimate based 
+on wheel odometry (encoders), integrated IMU, and integrated GPS.\relax\strut\ignorespaces} \\ \hline
+
+\parbox{0.22\textwidth}{\lstinline{/imu/data}} & \parbox{0.25\textwidth}{\lstinline{sensor_msgs/IMU}} & 
+\parbox{7cm}{Published by \lstinline{imu_filter_madgwick}, an orientation estimate based on Jackal's
+internal gyroscope, accelerometer, and magnetometer.\relax\strut\ignorespaces} \\ \hline
+
+\parbox{0.23\textwidth}{\lstinline{/navsat/fix}} &\parbox{0.25\textwidth}{\lstinline{sensor_msgs/NavSatFix}} & 
 Position fix from Jackal's built in GPS receiver. \\ \hline
-\lstinline{/navsat/vel} & \lstinline{geometry_msgs/TwistStamped} & 
-Velocity over ground according to the integrated GPS receiver.\\ \hline
 
-\lstinline{/cmd_drive} & \lstinline{jackal_msgs/Drive} &
+\parbox{0.23\textwidth}{\lstinline{/navsat/vel}} & \parbox{0.25\textwidth}{\lstinline{geometry_msgs/TwistStamped}} & 
+Velocity over ground according to the integrated GPS receiver. \\ \hline
+	
+\parbox{0.23\textwidth}{\lstinline{/cmd_drive}} &\parbox{0.25\textwidth}{\lstinline{jackal_msgs/Drive}} &
 Output from Jackal's kinematic controller, input to the motor controllers. Subscribe here for a lower-level look at what's going on. \\ \hline
-\lstinline{/feedback} & \lstinline{jackal_msgs/Feedback} &
+
+\parbox{0.23\textwidth}{\lstinline{/feedback}} & \parbox{0.25\textwidth}{\lstinline{jackal_msgs/Feedback}} &
 High-frequency inputs from Jackal's encoders and motor current sensors. \\ \hline
-\lstinline{/status} & \lstinline{jackal_msgs/Status} &
-Low-frequency status data for Jackal's systems. This information is republished in human
+
+\parbox{0.23\textwidth}{\lstinline{/status}} & \parbox{0.25\textwidth}{\lstinline{jackal_msgs/Status}} &
+\parbox{7cm}{Low-frequency status data for Jackal's systems. This information is republished in human
 readable form on the \lstinline{diagnostics} topic and is best consumed with the Robot
-Monitor. \\ \hline
+Monitor.\relax\strut\ignorespaces} \\ \hline
+
 \end{tabular}
 \caption{Jackal ROS API Topics}
 \label{table:rosapi}
@@ -176,12 +183,12 @@ The first step is to power up your Jackal and have some fun driving it around! I
 just unpacked Jackal from its shipment packaging, you'll need to open it up and connect the
 battery.
 
-Press the power button \raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-power.pdf}} on
+Press the power button \raisebox{-0.4em}{\includegraphics[width=0.6cm]{icon-power.pdf}} on
 Jackal's HMI panel. The LEDs should show a test pattern, after which you will wait about 30
 seconds for the internal PC to finish booting up.
 
 % TODO: Add this content back when the comms LED actually works.
-% When the comms LED (\raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-comms.pdf}}) is
+% When the comms LED (\raisebox{-0.4em}{\includegraphics[width=0.6cm]{icon-comms.pdf}}) is
 % green, this signals that the PC is finished booting up, and that the PC and MCU are in
 % communication. At this point, 
   
