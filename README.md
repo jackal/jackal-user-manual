@@ -33,7 +33,7 @@ Install some additional texlive packages:
 
     sudo tlmgr install everypage background titlesec microtype upquote \
                        enumitem tcolorbox environ trimspaces siunitx \
-			etoolbox zapfding
+					   etoolbox zapfding
 
 On **Windows**:
 - Install TeXworks.
