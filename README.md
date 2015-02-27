@@ -32,7 +32,8 @@ On **Ubuntu**, run:
 Install some additional texlive packages:
 
     sudo tlmgr install everypage background titlesec microtype upquote \
-                       enumitem tcolorbox environ trimspaces siunitx
+                       enumitem tcolorbox environ trimspaces siunitx \
+			etoolbox zapfding
 
 On **Windows**:
 - Install TeXworks.
