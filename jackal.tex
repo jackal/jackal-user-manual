@@ -8,9 +8,10 @@
 
 \documentclass[]{clearpath-latex/clearpath-manual}
 \graphicspath{{gen/}}
+\usepackage{float}
 \usepackage{fancyhdr}
 \pagestyle{fancyplain}
-\lfoot{Rev. 1.1.3}
+\lfoot{Rev. 1.1.4}
 \rfoot{Jackal UGV}
 \lhead{}         
 \chead{}              
@@ -200,56 +201,117 @@ get in touch with support.
 
 To get Jackal connected to your local wifi, you must first access the internal computer
 using a wired connection. Open the chassis, lower the computer tray, and connect to the network port
-labeled \lstinline{STATIC} with a standard ethernet cable. Now, set your laptop's ethernet port
-to a static IP such as \lstinline{192.168.1.51}, and connect via SSH to
-\lstinline{administrator@192.168.1.11}. The default password is \lstinline{clearpath}.
+labeled \lstinline{STATIC} with a standard ethernet cable. 
 
-Once connected via wire, execute \lstinline{wicd-curses} to enter the text/curses UI to the
-wireless interface configuration daemon (WICD). Within the text UI, you can configure
-which wireless network you'd like Jackal to connect to upon system startup.
+\subsubsection{Static IP Configuration}
 
-When the wireless link is established, remove the network cable, re-establish your SSH
-session over wireless, and close up Jackal.
+Set your laptop's ethernet port to a static IP such as \lstinline{192.168.1.51}.  To do this in Ubuntu, follow the steps below: 
+\begin{enumerate}
+  \item Click on the Wifi icon in the upper-right corner of your screen, and select \textbf{Edit Connections}
+  \item In the \textbf{Network Connections} window, under \textbf{Ethernet}, select your wired connection and then click \textbf{Edit}
+  \item Select the \textbf{IPv4 Settings} tab and then change the \textbf{Method} to \lstinline{Manual}
+  \item Click the \textbf{Add} button to add a new address
+  \item Enter a \lstinline{192.168.1.51} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
+\end{enumerate}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{wired_connection.PNG}
+  \caption{Static IP Configuration}
+  \label{staticip}
+\end{figure}
+            
+
+\subsubsection{Connect to Jackal via SSH over ethernet}
+
+The next step is to connect to Jackal via SSH.  To do so execute the following in a terminal window:
+
+\begin{lstlisting}
+ssh administrator@192.168.1.11
+\end{lstlisting}
+
+You will be promoted to enter a password.  The default password is \lstinline{clearpath}.
+
+\subsubsection{Connect Jackal to Wireless Network}
+
+Now that you're connected via SSH over a wired connection, you can setup Jackal to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.  
+
+In a terminal window, execute the following command:
+
+\begin{lstlisting}
+wicd-curses
+\end{lstlisting}
+
+You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you would like to connect to, and then press the right arrow to configure it. You can enter your network’s password near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks use WPA1/2 Passphrase, so if that’s you, make sure that option is selected. You also likely want to select the option to automatically reconnect to this network, so that Jackal will be there for you on your wireless automatically in the future.  
+
+When you’re finished, press \textbf{F10} to save, and then \textbf{C} to connect.  Jackal is now connected to wifi!  
+
+While you're still wired to Jackal, you'll need to identify the IP address of Jackal's wireless connection.  
+
+In a terminal window, execute:
+
+\begin{lstlisting}
+ifconfig
+\end{lstlisting}
+
+A list of network connections will be displayed within the terminal.  Locate the wireless network and make note of its IP address. Now that you know Jackal's wireless IP address, you may now exit the ethernet SSH session by executing \lstinline{exit}.
+
+Remove the ethernet cord and close up Jackal.   Now you can SSH into Jackal over the wireless network.  To do so, execute:
+
+\begin{lstlisting}
+ssh administrator@<IP_OF_JACKAL>
+\end{lstlisting}
+
+SSH sessions allow you to control Jackal's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc. 
 
 \subsection{Remote ROS Connectivity}\label{remote}
 
-Now that Jackal is on the wireless, you can access it via SSH or as a remote ROS master.
-Note that in the default configuration, the background job running on Jackal launches with the 
-\lstinline{robot_upstart} package, which is configured to set the \lstinline{ROS_IP}
-environment variable to the static IP of the \lstinline{em1} ethernet port, by default
-\lstinline{192.168.1.11}.
+To use ROS desktop tools, you’ll need your computer to be able to connect to Jackal’s ROS master. This will allow you to run ROS commands like \lstinline{rostopic list}, \lstinline{rostopic echo}, \lstinline{rosnode list}, and others, from a remote PC and the output will reflect the activity on Jackal’s ROS master, rather than on your own machine.  This can be a tricky process, but we’ve tried to make it as simple as possible.
 
-What this means is that in order for a workstation to communicate with Jackal over
-wireless, you may need to change one of three things:
+In order for the ROS tools on your computer to talk to Jackal, they need to know two things:
 
-\begin{enumerate}
-\item If you're confident that Jackal will be operated only where it is connected
-to wifi, you could set \lstinline{robot_upstart} to start the background ROS job only
-once wifi connects. To change this, run:
+\begin{itemize}[nolistsep]
+  \item How to find the ROS master, which is set in the \lstinline{ROS_MASTER_URI} environment variable, and
+  \item How processes on the other computer can find your computer, which is the \lstinline{ROS_IP} environment variable.
+\end{itemize}
+
+The suggested pattern is to create a file in your home directory called \lstinline{remote-jackal.sh} with the following contents:
+
 \begin{lstlisting}
-rosrun robot_upstart install jackal_base/launch/base.launch \
-    --job ros --interface wlan0
+export ROS_MASTER_URI=http://cpr-jackal-0001:11311  # Jackal's hostname
+export ROS_IP=10.25.0.102       # Your laptop's wireless IP address
 \end{lstlisting}
 
-\item If you're confident that your network will resolve hostnames correctly, you could
-change the generated ROS start script (in \lstinline{/usr/sbin/ros-start}) to set the
-\lstinline{ROS_HOSTNAME} env var rather than \lstinline{ROS_IP}.
+If your network doesn’t already resolve Jackal’s hostname to its wireless IP address, you may need to add a corresponding line to your computer’s /etc/hosts file:
 
-\item Finally, you can add a static route to your workstation which will route requests
-from \lstinline{192.168.1.11} to Jackal's real wireless IP on your network. An example of
-this configuration:
 \begin{lstlisting}
-sudo apt-get install ros-indigo-robot-upstart
-export ROS_MASTER_URI=http://192.168.1.11:11311
-export ROS_IP=$(rosrun robot_upstart getifip wlan0)
-sudo route add -net 192.168.1.11 netmask 255.255.255.255 gw $ROS_IP
+10.25.0.101 cpr-jackal-0001
 \end{lstlisting}
-These commands would be executed on your own machine.
-\end{enumerate}
 
-Please contact Clearpath Support if guidance is required in selecting and executing a
-remote access strategy. For more general details on how ROS works over TCP with
-multiple machines, please see:
+\textbf{NOTE:} You can verify the hostname and IP address of Jackal using the following commands during an SSH session with the onboard PC.
+
+\begin{lstlisting}
+hostname
+hostname -i
+\end{lstlisting}
+
+Then, when you’re ready to communicate remotely with Jackal, you can source that script like so, thus defining those two key environment variables in the present context.
+
+\begin{lstlisting}
+source remote-jackal.sh
+\end{lstlisting}
+
+To verify that everything is set up propelry, try running a few ROS commands, such as the standard visual ROS tools:
+
+\begin{lstlisting}
+roslaunch jackal_viz view_robot.launch
+rosrun rqt_robot_monitor rqt_robot_monitor
+rosrun rqt_console rqt_console
+\end{lstlisting}
+
+If the tools launch, then everything is setup properly. 
+
+Please contact Clearpath Support if you need assistance in conifugring remote access. For more general details on how ROS works over TCP with multiple machines, please see:
 
 \url{http://wiki.ros.org/ROS/Tutorials/MultipleMachines}.
 
