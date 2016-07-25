@@ -4,7 +4,7 @@ Jackal User Manual
 This repository contains the LaTeX source code for building the end user product
 documentation for [Jackal](http://www.clearpathrobotics.com/jackal/). If you are
 an end user, please download the official and released version of the manual from
-the [Clearpath Robotics Resources Page](http://www.clearpathrobotics.com/resources/technical-documentation/).
+the [Clearpath Robotics Resources Page](http://www.clearpathrobotics.com/jackal-user-manual/).
 
 
 Build
