@@ -13,9 +13,9 @@
 \pagestyle{fancyplain}
 \lfoot{Rev. 1.1.7}
 \rfoot{Jackal UGV}
-\lhead{}         
-\chead{}              
-\rhead{}  
+\lhead{}
+\chead{}
+\rhead{}
 \renewcommand{\headrulewidth}{0pt}
 
 
@@ -91,7 +91,7 @@ indicator, and system power button.
 To access Jackal's interior, actuate the latches under the front end of the lid, on the opposite end from
 the HMI. When you lift the lid, you will see Jackal's onboard Li-Ion battery pack, and its two connectors.
 The large Anderson Power Pole connector is to supply power to Jackal and must be connected in order for
-Jackal to operate. The smaller white Molex connector allows the battery pack to be charged inside Jackal 
+Jackal to operate. The smaller white Molex connector allows the battery pack to be charged inside Jackal
 while Jackal is powered off. It is recommended to connect both. The interior components of Jackal are
 labeled in \autoref{int}.
 
@@ -132,18 +132,18 @@ The key topics which comprise Jackal's ROS API are given in \autoref{table:rosap
 \hline
 Topic & Message Type & Purpose \\ \hline
 
-\lstinline!/cmd_vel! & \lstinline!geometry_msgs/Twist! & 
+\lstinline!/cmd_vel! & \lstinline!geometry_msgs/Twist! &
 Input to Jackal's kinematic controller. Publish here to make Jackal go. \\ \hline
-\lstinline!/odometry/filtered! & \lstinline!nav_msgs/Odometry! & 
+\lstinline!/odometry/filtered! & \lstinline!nav_msgs/Odometry! &
 Published by \lstinline!robot_localization!, a filtered localization estimate based
 on wheel odometry (encoders), integrated IMU, and integrated GPS. \\ \hline
 
-\lstinline!/imu/data! & \lstinline!sensor_msgs/IMU! & 
+\lstinline!/imu/data! & \lstinline!sensor_msgs/IMU! &
 Published by \lstinline!imu_filter_madgwick!, an orientation estimate based on Jackal's
 internal gyroscope, accelerometer, and magnetometer. \\ \hline
-\lstinline!/navsat/fix! & \lstinline!sensor_msgs/NavSatFix! & 
+\lstinline!/navsat/fix! & \lstinline!sensor_msgs/NavSatFix! &
 Position fix from Jackal's built in GPS receiver. \\ \hline
-\lstinline!/navsat/vel! & \lstinline!geometry_msgs/TwistStamped! & 
+\lstinline!/navsat/vel! & \lstinline!geometry_msgs/TwistStamped! &
 Velocity over ground according to the integrated GPS receiver.\\ \hline
 
 \lstinline!/cmd_drive! & \lstinline!jackal_msgs/Drive! &
@@ -189,11 +189,11 @@ seconds for the internal PC to finish booting up.
 % TODO: Add this content back when the comms LED actually works.
 % When the comms LED (\raisebox{-0.4em}{\includegraphics[width=0.5cm]{icon-comms.pdf}}) is
 % green, this signals that the PC is finished booting up, and that the PC and MCU are in
-% communication. At this point, 
-  
+% communication. At this point,
+
 Press the PS/P4 button on the Sony Bluetooth controller to sync the controller to Jackal. Once
 the small red LED on the controller goes solid, you're paired and ready to drive. Hold the L1 trigger
-button (deadman switch), and push the left thumbstick forward to drive the Jackal. For full speed mode, hold the R1 trigger.  See \autoref{ps4layout} for the Sony PS4 controls layout.   
+button (deadman switch), and push the left thumbstick forward to drive the Jackal. For full speed mode, hold the R1 trigger.  See \autoref{ps4layout} for the Sony PS4 controls layout.
 
 \begin{figure}[H]
   \centering
@@ -210,17 +210,17 @@ get in touch with support.
 
 To get Jackal connected to your local wifi, you must first access the internal computer
 using a wired connection. Open the chassis, lower the computer tray, and connect to the network port
-labeled \lstinline{STATIC} with a standard ethernet cable. 
+labeled \lstinline{STATIC} with a standard ethernet cable.
 
 \subsubsection{Static IP Configuration}
 
-Set your laptop's ethernet port to a static IP such as \lstinline{192.168.1.51}.  To do this in Ubuntu, follow the steps below: 
+Set your laptop's ethernet port to a static IP such as \lstinline{192.168.131.51}.  To do this in Ubuntu, follow the steps below:
 \begin{enumerate}
   \item Click on the Wifi icon in the upper-right corner of your screen, and select \textbf{Edit Connections}
   \item In the \textbf{Network Connections} window, under \textbf{Ethernet}, select your wired connection and then click \textbf{Edit}
   \item Select the \textbf{IPv4 Settings} tab and then change the \textbf{Method} to \lstinline{Manual}
   \item Click the \textbf{Add} button to add a new address
-  \item Enter a \lstinline{192.168.1.51} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
+  \item Enter a \lstinline{192.168.131.51} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
 \end{enumerate}
 
 \begin{figure}[H]
@@ -229,21 +229,21 @@ Set your laptop's ethernet port to a static IP such as \lstinline{192.168.1.51}.
   \caption{Static IP Configuration}
   \label{staticip}
 \end{figure}
-            
+
 
 \subsubsection{Connect to Jackal via SSH over ethernet}
 
 The next step is to connect to Jackal via SSH.  To do so execute the following in a terminal window:
 
 \begin{lstlisting}
-ssh administrator@192.168.1.11
+ssh administrator@192.168.131.1
 \end{lstlisting}
 
 You will be promoted to enter a password.  The default password is \lstinline{clearpath}.
 
 \subsubsection{Connect Jackal to Wireless Network}
 
-Now that you're connected via SSH over a wired connection, you can setup Jackal to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.  
+Now that you're connected via SSH over a wired connection, you can setup Jackal to connect to a local wifi network.  To do this, you will use the wireless interface configuration daemon (WICD) - a preinstalled network manager.
 
 In a terminal window, execute the following command:
 
@@ -251,11 +251,11 @@ In a terminal window, execute the following command:
 wicd-curses
 \end{lstlisting}
 
-You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you would like to connect to, and then press the right arrow to configure it. You can enter your network’s password near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks use WPA1/2 Passphrase, so if that’s you, make sure that option is selected. You also likely want to select the option to automatically reconnect to this network, so that Jackal will be there for you on your wireless automatically in the future.  
+You should see a browsable list of networks which the robot has detected. Use arrow keys to select the one you would like to connect to, and then press the right arrow to configure it. You can enter your network’s password near the bottom of the page, and note that you must select the correct encryption scheme; most modern networks use WPA1/2 Passphrase, so if that’s you, make sure that option is selected. You also likely want to select the option to automatically reconnect to this network, so that Jackal will be there for you on your wireless automatically in the future.
 
-When you’re finished, press \textbf{F10} to save, and then \textbf{C} to connect.  Jackal is now connected to wifi!  
+When you’re finished, press \textbf{F10} to save, and then \textbf{C} to connect.  Jackal is now connected to wifi!
 
-While you're still wired to Jackal, you'll need to identify the IP address of Jackal's wireless connection.  
+While you're still wired to Jackal, you'll need to identify the IP address of Jackal's wireless connection.
 
 In a terminal window, execute:
 
@@ -271,7 +271,7 @@ Remove the ethernet cord and close up Jackal.   Now you can SSH into Jackal over
 ssh administrator@<IP_OF_JACKAL>
 \end{lstlisting}
 
-SSH sessions allow you to control Jackal's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc. 
+SSH sessions allow you to control Jackal's internal computer.  You can do various things such as download packages, run updates, add/remove files, transfer files etc.
 
 \subsection{Remote ROS Connectivity}\label{remote}
 
@@ -318,7 +318,7 @@ rosrun rqt_robot_monitor rqt_robot_monitor
 rosrun rqt_console rqt_console
 \end{lstlisting}
 
-If the tools launch, then everything is setup properly. 
+If the tools launch, then everything is setup properly.
 
 Please contact Clearpath Support if you need assistance in conifugring remote access. For more general details on how ROS works over TCP with multiple machines, please see:
 
