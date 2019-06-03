@@ -10,6 +10,13 @@ the [Clearpath Robotics Resources Page](http://www.clearpathrobotics.com/jackal-
 Build
 -----
 
+To download the documentation sources please run the following sequence:
+
+    git clone git@github.com:jackal/jackal-user-manual.git
+    cd jackal-user-manual
+    git submodule init
+    git submodule update
+
 To build Jackal's user manual, clone this repo recursively, and run:
 
     xelatex jackal.tex
