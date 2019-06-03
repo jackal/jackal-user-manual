@@ -10,8 +10,11 @@ the [Clearpath Robotics Resources Page](http://www.clearpathrobotics.com/jackal-
 Build
 -----
 
-To build Jackal's user manual, clone this repo recursively, and run:
 
+To build Jackal's user manual:
+
+    git clone --recurse-submodules https://github.com/jackal/jackal-user-manual.git
+    cd jackal-user-manual
     xelatex jackal.tex
 
 The output is written to `jackal.pdf`. The `xelatex` command must be invoked twice
