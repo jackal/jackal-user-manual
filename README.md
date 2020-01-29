@@ -37,6 +37,9 @@ Install some additional texlive packages:
     sudo tlmgr install everypage background titlesec microtype upquote \
                        enumitem tcolorbox environ trimspaces siunitx
 
+On **Fedora/RHEL/CentOS**, run:
+sudo yum install texlive-xetex texlive-everypage texlive-background texlive-titlesec texlive-microtype texlive-upquote texlive-enumitem texlive-tcolorbox texlive-environ texlive-trimspaces texlive-siunitx
+
 On **Windows**:
 - Install TeXworks.
 - Install Source Tree, or your preferred Windows Git client.
