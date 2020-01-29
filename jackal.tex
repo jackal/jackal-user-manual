@@ -136,7 +136,7 @@ Topic & Message Type & Purpose \\ \hline
 Input to Jackal's kinematic controller. Publish here to make Jackal go. \\ \hline
 \lstinline!/odometry/filtered! & \lstinline!nav_msgs/Odometry! &
 Published by \lstinline!robot_localization!, a filtered localization estimate based
-on wheel odometry (encoders), integrated IMU, and integrated GPS. \\ \hline
+on wheel odometry (encoders), and integrated IMU. \\ \hline
 
 \lstinline!/imu/data! & \lstinline!sensor_msgs/IMU! &
 Published by \lstinline!imu_filter_madgwick!, an orientation estimate based on Jackal's
@@ -438,9 +438,8 @@ Confirm voltage and polarity before reconnecting the terminal block.
 You may also choose to terminate your payload's power lead with the appropriate crimps and pins
 for the four pin Molex connector--- this option may be more convenient if you expect to be adding
 and removing your payload from Jackal more frequently and would prefer not to be fiddling with the
-terminal block. Contact Clearpath Support for details about these parts.
+terminal block. The Digi-key part number for the matting connector is WM3701-ND and the pins used are WM2501CT-ND.
 
-% TODO: Include a table of the parts and diagram showing the pinout.
 
 \subsection{Software Integration}
 
