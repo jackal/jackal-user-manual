@@ -30,7 +30,7 @@
 \section{Introduction}
 
 Jackal is a rugged, lightweight, fast, and easy-to-use unmanned ground vehicle for ROS
-Kinetic, presented by Clearpath Robotics.
+Melodic, presented by Clearpath Robotics.
 
 Jackal includes a standard internal PC, as well as basic IMU and GPS. Standard
 perception modules are available, including URDF and simulator integration, and
@@ -214,13 +214,13 @@ labeled \lstinline{STATIC} with a standard ethernet cable.
 
 \subsubsection{Static IP Configuration}
 
-Set your laptop's ethernet port to a static IP such as \lstinline{192.168.131.51}.  To do this in Ubuntu, follow the steps below:
+Set your laptop's ethernet port to a static IP such as \lstinline{192.168.131.101}.  To do this in Ubuntu, follow the steps below:
 \begin{enumerate}
   \item Click on the Wifi icon in the upper-right corner of your screen, and select \textbf{Edit Connections}
   \item In the \textbf{Network Connections} window, under \textbf{Ethernet}, select your wired connection and then click \textbf{Edit}
   \item Select the \textbf{IPv4 Settings} tab and then change the \textbf{Method} to \lstinline{Manual}
   \item Click the \textbf{Add} button to add a new address
-  \item Enter a \lstinline{192.168.131.51} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
+  \item Enter a \lstinline{192.168.131.101} as the static IP under the \textbf{Address} column, and enter \lstinline{255.255.255.0} under the \textbf{NetMask} column, and then select \textbf{Save}
 \end{enumerate}
 
 \begin{figure}[H]
@@ -333,12 +333,12 @@ For help troubleshooting a multiple machines connectivity issue, see:
 To command or observe Jackal from your desktop computer, first set up a basic
 ROS installation. See the following page for details:
 
-\url{http://wiki.ros.org/kinetic/Installation/Ubuntu}
+\url{http://wiki.ros.org/melodic/Installation/Ubuntu}
 
 When your ROS install is set up, install the Jackal desktop packages:
 
 \begin{lstlisting}
-sudo apt-get install ros-kinetic-jackal-desktop
+sudo apt-get install ros-melodic-jackal-desktop
 \end{lstlisting}
 
 Once your remote access to Jackal's ROS master is configured (see options in \autoref{remote}),
