@@ -74,8 +74,7 @@ indicator, and system power button.
 
 \begin{figure}[pt]
   \centering
-  \def\svgwidth{12cm}
-  \input{gen/battery-view.pdf_tex}
+  \includegraphics[width=0.8\linewidth]{battery-view.png}
   \caption{Battery area inside Jackal.}
   \label{int}
 \end{figure}
@@ -123,6 +122,9 @@ The communication protocol used is rosserial. An instance of the \lstinline{ross
 serial node is embedded in the \lstinline{jackal_base} node, where it is connected to
 Jackal's kinematic controller.
 
+An internal magnetometer is available, but not recommended for use due to its location
+in the vehicle chassis.
+
 The key topics which comprise Jackal's ROS API are given in \autoref{table:rosapi}.
 
 % TODO: Data flow diagram
@@ -140,7 +142,7 @@ on wheel odometry (encoders), and integrated IMU. \\ \hline
 
 \lstinline!/imu/data! & \lstinline!sensor_msgs/IMU! &
 Published by \lstinline!imu_filter_madgwick!, an orientation estimate based on Jackal's
-internal gyroscope, accelerometer, and magnetometer. \\ \hline
+internal gyroscope and accelerometer. \\ \hline
 \lstinline!/navsat/fix! & \lstinline!sensor_msgs/NavSatFix! &
 Position fix from Jackal's built in GPS receiver. \\ \hline
 \lstinline!/navsat/vel! & \lstinline!geometry_msgs/TwistStamped! &
@@ -368,8 +370,7 @@ rosrun rqt_robot_monitor rqt_robot_monitor
 When equipped with a laser scanner as is available in the Gazebo simulation, Jackal works with the
 standard ROS navigation stack. See \url{http://wiki.ros.org/jackal_navigation}.
 
-A standard outdoor GPS autonomy demonstration using Jackal's built-in sensing is planned, as well
-as a calibration app for the internal magnetometer.
+A standard outdoor GPS autonomy demonstration using Jackal's built-in sensing is planned.
 
 
 \section{Charging \& Battery Maintenance}
