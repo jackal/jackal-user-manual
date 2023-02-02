@@ -1,5 +1,7 @@
 Jackal User Manual
 ==================
+ # **NOTE: These tutorials have been superceded. Find the latest Jackal user manual at [docs.clearpathrobotics.com](https://docs.clearpathrobotics.com/docs/robots/outdoor_robots/jackal/user_manual_jackal/).**
+
 
 This repository contains the LaTeX source code for building the end user product
 documentation for [Jackal](http://www.clearpathrobotics.com/jackal/). If you are
